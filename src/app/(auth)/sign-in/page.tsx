@@ -20,7 +20,7 @@ const Page = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const isSeller = searchParams.get('as') === "seller";
-  const origin = searchParams.get('origin');
+  const origin = searchParams.get('origin');  
 
   const continueAsSeller = () => {
     router.push('?as=seller');

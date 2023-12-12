@@ -6,7 +6,7 @@ import ProductReel from "@/components/ProductReel";
 
 const perks = [
   {
-    name: 'Insant Delivery',
+    name: 'Instant Delivery',
     Icon: ArrowDownToLine,
     description: 'Get your assets delivered to your email in seconds and download them right away.'
   },
@@ -26,8 +26,8 @@ export default function Home() {
   return (
     <>
       <MaxWidthWrapper>
-        <main className="flex flex-col gap-6 items-center max-w-3xl mx-auto py-20 text-center">
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-900">
+        <main className="flex flex-col gap-6 items-center w-full mx-auto py-20 text-center">
+          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-gray-900 text-center self-center max-w-3xl">
             Your marketplace for high-quality{" "}
             <span className="text-blue-600">digital assets</span>.
           </h1>
@@ -44,7 +44,7 @@ export default function Home() {
             <Button variant="ghost">Our quality promise &rarr; </Button>
           </div>
 
-          {/* TODO: LIST PRODUCTS */}
+          
           <ProductReel title="Brand new" href="/products" query={{sort: 'desc', limit: 4}} />
         </main>
       </MaxWidthWrapper>

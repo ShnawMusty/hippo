@@ -35,7 +35,7 @@ const ProductReel = (props: ProductReelProps) => {
   }
 
   return (
-    <section className="space-y-6">
+    <section className="py-10 w-full">
       <div className="md:flex md:items-center md:justify-between mb-4">
 
         <div className="max-w-2xl px-4 lg:max-w-4xl lg:px-0">

@@ -34,11 +34,8 @@ export const stripeWebhookHandler = async (req: express.Request, res: express.Re
     return res.status(400).send(`Webhook Error: No user present in metadata`)
   };
 
-  let user;
-  let order
 
   if (event.type === 'checkout.session.completed') {
-    try {
       const payload = await getPayloadClient();
       const {docs: users} = await payload.find({
       collection: 'users',
@@ -49,7 +46,7 @@ export const stripeWebhookHandler = async (req: express.Request, res: express.Re
       }
     });
 
-    [user] = users;
+    const [user] = users;
 
     if (!user) {
       return res.status(400).json({ error: 'No such user exists.'})
@@ -65,7 +62,7 @@ export const stripeWebhookHandler = async (req: express.Request, res: express.Re
       }
     });
 
-    [order] = orders;
+    const [order] = orders;
 
     if (!order) {
       return res.status(400).json({ error: 'No such order exists'})
@@ -82,11 +79,7 @@ export const stripeWebhookHandler = async (req: express.Request, res: express.Re
         }
       }
     });
-    } catch (error) {
-      return null
-    }
     
-
     try {
       const data = await resend.emails.send({
         from: 'DigitalHippo <shnawnnn@gmail.com>',
@@ -104,7 +97,6 @@ export const stripeWebhookHandler = async (req: express.Request, res: express.Re
     } catch (error) {
       res.status(500).json({ error })
     };
-
   }
 
   return res.status(200).send()
